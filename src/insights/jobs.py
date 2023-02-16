@@ -23,8 +23,8 @@ def read(path: str) -> List[Dict]:
         arr = []
         for index in range(len(data)):
             dict = {}
-            for headerIndex in range(len(header)):
-                dict[header[headerIndex]] = data[index][headerIndex]
+            for header_index in range(len(header)):
+                dict[header[header_index]] = data[index][header_index]
             arr.append(dict)
         return arr
 
@@ -66,7 +66,11 @@ def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
     list
         List of jobs with provided job_type
     """
-    raise NotImplementedError
+    arr = []
+    for job in jobs:
+        if job['job_type'] == job_type:
+            arr.append(job)
+    return arr
 
 
 # read('data/jobs.csv')
