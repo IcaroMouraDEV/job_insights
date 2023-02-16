@@ -8,3 +8,19 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 -->
+
+## Arquivos desenvolvidos por mim
+
+  - `src/insights/jobs.py`
+  - `src/insights/industries.py`
+  - `src/insights/salaries.py`
+  
+## Arquivo onde criei a rota `/job/<index>`
+  
+  - `src/flask_app/routes_and_views.py` -> função `job`
+  
+## Testes desenvolvidos por mim
+
+  - `tests/counter/test_counter`
+  - `tests/brazilian/test_brazilian_jobs`
+  - `tests/sorting/test_sorting`
