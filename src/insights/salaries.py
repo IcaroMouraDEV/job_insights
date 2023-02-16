@@ -71,6 +71,31 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
+    if 'min_salary' not in job or 'max_salary' not in job:
+        raise ValueError
+
+    validate([job['min_salary'], job['max_salary'], salary])
+
+    return int(job['min_salary']) <= int(salary) <= int(job['max_salary'])
+
+
+def validate(
+    salaries: List[Union[int, str]]
+) -> None:
+
+    is_str_or_int_salaries = [
+        type(value) in (int, str) for value in salaries
+    ]
+
+    is_valid_str_salaries = [
+        value.isnumeric() for value in salaries if isinstance(value, str)
+    ]
+
+    if not all(is_str_or_int_salaries) or not all(is_valid_str_salaries):
+        raise ValueError
+
+    if int(salaries[0]) > int(salaries[1]):
+        raise ValueError
 
 
 def filter_by_salary_range(
@@ -91,7 +116,14 @@ def filter_by_salary_range(
     list
         Jobs whose salary range contains `salary`
     """
-    raise NotImplementedError
+    filtered_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_jobs.append(job)
+        except ValueError:
+            continue
+    return filtered_jobs
 
 
 # get_max_salary('data/jobs.csv')
