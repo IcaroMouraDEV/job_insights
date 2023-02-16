@@ -19,7 +19,9 @@ def get_max_salary(path: str) -> int:
     """
     jobs = read(path)
     # https://www.w3schools.com/python/ref_string_isdigit.asp
-    max_salary = {int(job['max_salary']) for job in jobs if job['max_salary'].isdigit()}
+    max_salary = {
+        int(job['max_salary']) for job in jobs if job['max_salary'].isdigit()
+    }
     return max(max_salary)
 
 
@@ -40,7 +42,9 @@ def get_min_salary(path: str) -> int:
     """
     jobs = read(path)
     # https://www.w3schools.com/python/ref_string_isdigit.asp
-    min_salary = {int(job['min_salary']) for job in jobs if job['min_salary'].isdigit()}
+    min_salary = {
+        int(job['min_salary']) for job in jobs if job['min_salary'].isdigit()
+    }
     return min(min_salary)
 
 
