@@ -1,4 +1,5 @@
 from typing import Union, List, Dict
+from .jobs import read
 
 
 def get_max_salary(path: str) -> int:
@@ -16,7 +17,10 @@ def get_max_salary(path: str) -> int:
     int
         The maximum salary paid out of all job opportunities
     """
-    raise NotImplementedError
+    jobs = read(path)
+    # https://www.w3schools.com/python/ref_string_isdigit.asp
+    max_salary = {int(job['max_salary']) for job in jobs if job['max_salary'].isdigit()}
+    return max(max_salary)
 
 
 def get_min_salary(path: str) -> int:
@@ -34,7 +38,10 @@ def get_min_salary(path: str) -> int:
     int
         The minimum salary paid out of all job opportunities
     """
-    raise NotImplementedError
+    jobs = read(path)
+    # https://www.w3schools.com/python/ref_string_isdigit.asp
+    min_salary = {int(job['min_salary']) for job in jobs if job['min_salary'].isdigit()}
+    return min(min_salary)
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
@@ -60,7 +67,6 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    raise NotImplementedError
 
 
 def filter_by_salary_range(
@@ -82,3 +88,7 @@ def filter_by_salary_range(
         Jobs whose salary range contains `salary`
     """
     raise NotImplementedError
+
+
+# get_max_salary('data/jobs.csv')
+# get_min_salary('data/jobs.csv')
