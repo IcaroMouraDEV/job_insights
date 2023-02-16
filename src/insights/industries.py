@@ -1,6 +1,7 @@
 from typing import List, Dict
 from jobs import read
 
+
 def get_unique_industries(path: str) -> List[str]:
     """Checks all different industries and returns a list of them
 
@@ -38,4 +39,8 @@ def filter_by_industry(jobs: List[Dict], industry: str) -> List[Dict]:
     list
         List of jobs with provided industry
     """
-    raise NotImplementedError
+    arr = []
+    for job in jobs:
+        if job['industry'] == industry:
+            arr.append(job)
+    return arr
