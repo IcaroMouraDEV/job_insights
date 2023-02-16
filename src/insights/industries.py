@@ -1,5 +1,5 @@
 from typing import List, Dict
-from jobs import read
+from .jobs import read
 
 
 def get_unique_industries(path: str) -> List[str]:
@@ -20,7 +20,8 @@ def get_unique_industries(path: str) -> List[str]:
     jobs = read(path)
     arr = set()
     for job in jobs:
-        arr.add(job['industry'])
+        if job['industry'] != '':
+            arr.add(job['industry'])
     return arr
 
 
